@@ -8,39 +8,23 @@ with open(os.path.join(here, "README.md"), encoding="utf-8") as f:
     long_description = f.read()
 
 
-if os.getenv("UV_INSTALL") == "1":
+setup(
+    name="dreams",
+    packages=find_packages(),
+    version="1.0.0",
+    description="DreaMS (Deep Representations Empowering the Annotation of Mass Spectra)",
+    author="DreaMS developers",
+    license="MIT",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    url="https://github.com/pluskal-lab/MassSpecGym",
     install_requires = [
         "numpy",
-        "numba",
-        "torch",
-        "pytorch-lightning",
-        "torchmetrics",
-        "pandas",
-        "pyarrow",
-        "h5py",
-        "rdkit",
-        "umap-learn",
-        "seaborn",
-        "plotly",
-        "ase",
-        "wandb",
-        "pandarallel",
-        "matchms",
-        "pyopenms",
-        "igraph",
-        "molplotly",
-        "fire",
-        "huggingface_hub",
-        "msml @ git+https://github.com/roman-bushuiev/msml_legacy_architectures.git@main"
-    ]
-else:
-    install_requires = [
-        "numpy==1.24.4",
         "numba==0.57.1",
         "torch==2.2.1",
         "pytorch-lightning==2.0.8",
         "torchmetrics==1.3.2",
-        "pandas==2.2.0",
+        "pandas",
         "pyarrow==15.0.2",
         "h5py==3.11.0",
         "rdkit==2023.9.5",
@@ -57,20 +41,7 @@ else:
         "fire==0.6.0",
         "huggingface_hub==0.24.5",
         "msml @ git+https://github.com/roman-bushuiev/msml_legacy_architectures.git@main"
-    ]
-
-
-setup(
-    name="dreams",
-    packages=find_packages(),
-    version="1.0.0",
-    description="DreaMS (Deep Representations Empowering the Annotation of Mass Spectra)",
-    author="DreaMS developers",
-    license="MIT",
-    long_description=long_description,
-    long_description_content_type="text/markdown",
-    url="https://github.com/pluskal-lab/MassSpecGym",
-    install_requires=install_requires,
+    ],
     extras_require={
         "dev": [
             "black==24.4.2",
